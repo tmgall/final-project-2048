@@ -12,16 +12,12 @@ By Week 2, I finish the internal game logic and its testing. This will involve s
 
 By Week 3, I finalize the UI in Cinder and integrate it with the Cinder engine developed in Week 1. This part will require more creativity, as I will need to find an effective way to display the game, the current score, and any other information as a UI. This will also require more testing at a smaller scale to ensure that the structure of the code behind the scenes is functionally correct. 
 
-By Week 4, I complete all documentation, instructions, commenting, testing, and add any additional features given extra time. I will also have friends play the game from my computer as a sort of beta test to ensure that a generic user would easily run and play the game. As this is a final project worth a higher percentage of my grade, I will spend more time validating my work, adding comments, and checking for redundancies or unclear code. 
+By Week 4, I will add a menu screen as well as functionality to play the game with a larger board. For instance, the player will be able to select a 4x4 grid, 5x5, etc. I will also have friends play the game from my computer as a sort of beta test to ensure that a generic user would easily run and play the game. As this is a final project worth a higher percentage of my grade, I will spend more time validating my work, adding comments, and checking for redundancies or unclear code. This will be the last time to remedy any possible things I may have missed in previous weeks, so I'll spend a lot of time going back over my documentation, commenting, and instructions. 
 
 
 ## Additional Ideas
 
 Here are a few ideas for expansions to the game that I could implement if I finish the above too quickly:
-
--Create functionality that modifies the board size, so I could create boards of size 5x5, 16x16, etc. instead of 4x4.
-
--Add a menu screen so that the users feels more like they're playing a game rather than running a program.
 
 -Create a bot that can play the game on its own.
 
