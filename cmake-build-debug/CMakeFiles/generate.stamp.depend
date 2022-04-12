@@ -1,0 +1,34 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/JetBrains/CLion 2021.3.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeCInformation.cmake
+C:/Program Files/JetBrains/CLion 2021.3.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeCXXInformation.cmake
+C:/Program Files/JetBrains/CLion 2021.3.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake
+C:/Program Files/JetBrains/CLion 2021.3.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeGenericSystem.cmake
+C:/Program Files/JetBrains/CLion 2021.3.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake
+C:/Program Files/JetBrains/CLion 2021.3.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake
+C:/Program Files/JetBrains/CLion 2021.3.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeParseArguments.cmake
+C:/Program Files/JetBrains/CLion 2021.3.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeRCInformation.cmake
+C:/Program Files/JetBrains/CLion 2021.3.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake
+C:/Program Files/JetBrains/CLion 2021.3.3/bin/cmake/win/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake
+C:/Program Files/JetBrains/CLion 2021.3.3/bin/cmake/win/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+C:/Program Files/JetBrains/CLion 2021.3.3/bin/cmake/win/share/cmake-3.21/Modules/Compiler/MSVC-C.cmake
+C:/Program Files/JetBrains/CLion 2021.3.3/bin/cmake/win/share/cmake-3.21/Modules/Compiler/MSVC-CXX.cmake
+C:/Program Files/JetBrains/CLion 2021.3.3/bin/cmake/win/share/cmake-3.21/Modules/FetchContent.cmake
+C:/Program Files/JetBrains/CLion 2021.3.3/bin/cmake/win/share/cmake-3.21/Modules/FetchContent/CMakeLists.cmake.in
+C:/Program Files/JetBrains/CLion 2021.3.3/bin/cmake/win/share/cmake-3.21/Modules/FindGit.cmake
+C:/Program Files/JetBrains/CLion 2021.3.3/bin/cmake/win/share/cmake-3.21/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/JetBrains/CLion 2021.3.3/bin/cmake/win/share/cmake-3.21/Modules/FindPackageMessage.cmake
+C:/Program Files/JetBrains/CLion 2021.3.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-MSVC-C.cmake
+C:/Program Files/JetBrains/CLion 2021.3.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-MSVC-CXX.cmake
+C:/Program Files/JetBrains/CLion 2021.3.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows-MSVC.cmake
+C:/Program Files/JetBrains/CLion 2021.3.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/Windows.cmake
+C:/Program Files/JetBrains/CLion 2021.3.3/bin/cmake/win/share/cmake-3.21/Modules/Platform/WindowsPaths.cmake
+C:/Users/tmgal/OneDrive/Desktop/Cinder/cmake-build-debug/lib/msw/x86/Debug/cinderTargets.cmake
+C:/Users/tmgal/OneDrive/Desktop/Cinder/lib/msw/x86/Debug/cinderConfig.cmake
+C:/Users/tmgal/OneDrive/Desktop/Cinder/my-projects/final-project-tmgall/CMakeLists.txt
+C:/Users/tmgal/OneDrive/Desktop/Cinder/my-projects/final-project-tmgall/cmake-build-debug/CMakeFiles/3.21.1/CMakeCCompiler.cmake
+C:/Users/tmgal/OneDrive/Desktop/Cinder/my-projects/final-project-tmgall/cmake-build-debug/CMakeFiles/3.21.1/CMakeCXXCompiler.cmake
+C:/Users/tmgal/OneDrive/Desktop/Cinder/my-projects/final-project-tmgall/cmake-build-debug/CMakeFiles/3.21.1/CMakeRCCompiler.cmake
+C:/Users/tmgal/OneDrive/Desktop/Cinder/my-projects/final-project-tmgall/cmake-build-debug/CMakeFiles/3.21.1/CMakeSystem.cmake
+C:/Users/tmgal/OneDrive/Desktop/Cinder/proj/cmake/configure.cmake
+C:/Users/tmgal/OneDrive/Desktop/Cinder/proj/cmake/modules/cinderMakeApp.cmake
+C:/Users/tmgal/OneDrive/Desktop/Cinder/proj/cmake/utilities.cmake

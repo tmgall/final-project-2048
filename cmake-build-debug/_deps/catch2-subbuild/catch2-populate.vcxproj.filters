@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\cmake-build-debug\_deps\catch2-subbuild\CMakeFiles\85d2a1eebd60853eb3a053f325579c71\catch2-populate-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\cmake-build-debug\_deps\catch2-subbuild\CMakeFiles\85d2a1eebd60853eb3a053f325579c71\catch2-populate-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\cmake-build-debug\_deps\catch2-subbuild\CMakeFiles\85d2a1eebd60853eb3a053f325579c71\catch2-populate-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\cmake-build-debug\_deps\catch2-subbuild\CMakeFiles\85d2a1eebd60853eb3a053f325579c71\catch2-populate-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\cmake-build-debug\_deps\catch2-subbuild\CMakeFiles\85d2a1eebd60853eb3a053f325579c71\catch2-populate-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\cmake-build-debug\_deps\catch2-subbuild\CMakeFiles\85d2a1eebd60853eb3a053f325579c71\catch2-populate-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\cmake-build-debug\_deps\catch2-subbuild\CMakeFiles\85d2a1eebd60853eb3a053f325579c71\catch2-populate-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\cmake-build-debug\_deps\catch2-subbuild\CMakeFiles\85d2a1eebd60853eb3a053f325579c71\catch2-populate-test.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\cmake-build-debug\_deps\catch2-subbuild\CMakeFiles\6554880fdec3714bda8e010db1dc489f\catch2-populate-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\cmake-build-debug\_deps\catch2-subbuild\CMakeFiles\6a9bf3162734c3ac561e4b620d849b87\catch2-populate.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\cmake-build-debug\_deps\catch2-subbuild\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\cmake-build-debug\_deps\catch2-subbuild\CMakeFiles\catch2-populate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{2FD67364-01D5-3130-9A1D-1F3AD7DE844F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
