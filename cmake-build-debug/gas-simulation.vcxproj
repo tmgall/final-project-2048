@@ -318,8 +318,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\apps\cinder_app_main.cc" />
-    <ClCompile Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\src\gas_container.cc" />
-    <ClCompile Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\src\gas_simulation_app.cc" />
+    <ClCompile Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\src\game_state.cc" />
+    <ClCompile Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\src\game_app.cc" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\cmake-build-debug\ZERO_CHECK.vcxproj">

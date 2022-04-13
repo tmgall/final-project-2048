@@ -1,10 +1,10 @@
-#include "gas_simulation_app.h"
+#include "game_app.h"
 
-using idealgas::IdealGasApp;
+using game::GameApp;
 
-void prepareSettings(IdealGasApp::Settings* settings) {
+void prepareSettings(GameApp::Settings* settings) {
   settings->setResizable(false);
 }
 
 // This line is a macro that expands into an "int main()" function.
-CINDER_APP(IdealGasApp, ci::app::RendererGl, prepareSettings);
+CINDER_APP(GameApp, ci::app::RendererGl, prepareSettings);

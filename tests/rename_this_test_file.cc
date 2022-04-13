@@ -1,6 +1,6 @@
 #include <catch2/catch.hpp>
 
-#include <gas_container.h>
+#include <game_state.h>
 
 using idealgas::GasContainer;
 
