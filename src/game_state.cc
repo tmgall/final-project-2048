@@ -4,16 +4,10 @@ namespace game {
 
 using glm::vec2;
 
-GameState::GameState() {
-  window_width_ = kDefaultWindowWidth;
-  window_height_ = kDefaultWindowHeight;
-  margin_ = kDefaultMargin;
-  board_size_ = kDefaultBoardSize;
-  square_width_ = kDefaultSquareWidth;
-  info_height_ = kDefaultInfoHeight;
-  key_overlay_w_ = kDefaultKeyOverlayW;
-  key_overlay_h_ = kDefaultKeyOverlayH;
-}
+GameState::GameState() : GameState(kDefaultWindowWidth, kDefaultWindowHeight,
+                                   kDefaultMargin, kDefaultBoardSize,kDefaultSquareWidth,
+                                   kDefaultInfoHeight, kDefaultKeyOverlayW,
+                                   kDefaultKeyOverlayH) {}
 
 GameState::GameState(size_t window_width, size_t window_height, size_t margin, size_t board_size, size_t square_width,
                      size_t info_height, size_t key_overlay_w, size_t key_overlay_h) {
@@ -25,18 +19,21 @@ GameState::GameState(size_t window_width, size_t window_height, size_t margin, s
   info_height_ = info_height;
   key_overlay_w_ = key_overlay_w;
   key_overlay_h_ = key_overlay_h;
-
+  tiles = vector<ci::Rectf>();
+  for (size_t i = 0; i < board_size_; i++) {
+    for (size_t j = 0; j < board_size_; j++) {
+      vec2 top_left(margin_ + square_width_ * i, info_height_ + square_width_ * j);
+      vec2 bottom_right(margin_ + square_width_ * (i + 1), info_height_ + square_width_ * (j + 1));
+      tiles.push_back(ci::Rectf(top_left, bottom_right));
+    }
+  }
 }
 
 void GameState::Display() const {
   ci::gl::color(ci::Color("white"));
   DrawKeyOverlay();
-  for (size_t i = 0; i < board_size_; i++) {
-    for (size_t j = 0; j < board_size_; j++) {
-      vec2 top_left(margin_ + square_width_ * i, info_height_ + square_width_ * j);
-      vec2 bottom_right(margin_ + square_width_ * (i + 1), info_height_ + square_width_ * (j + 1));
-      ci::gl::drawStrokedRect(ci::Rectf(top_left, bottom_right));
-    }
+  for (const ci::Rectf& tile : tiles) {
+    ci::gl::drawStrokedRect(tile);
   }
 }
 
@@ -74,4 +71,4 @@ void GameState::DrawKeyOverlay() const {
   }
 }
 
-}  // namespace idealgas
+}  // namespace game

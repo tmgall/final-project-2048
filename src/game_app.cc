@@ -2,10 +2,15 @@
 
 namespace game {
 
-GameApp::GameApp() : state(GameState(kWindowWidth, kWindowHeight, kMargin,
-                                     kBoardSize,kSquareWidth, kInfoHeight,
-                                     kKeyOverlayW, kKeyOverlayH)) {
-  ci::app::setWindowSize(kWindowWidth, kWindowHeight);
+GameApp::GameApp() :
+                 window_width_(kDefaultWindowWidth), window_height_(kDefaultWindowHeight), margin_(kDefaultMargin),
+                 board_size_(kDefaultBoardSize), square_width_(kDefaultSquareWidth), info_height_(kDefaultInfoHeight),
+                 key_overlay_w_(kDefaultKeyOverlayW), key_overlay_h_(kDefaultKeyOverlayH),
+                 state(GameState(kDefaultWindowWidth, kDefaultWindowHeight,
+                                 kDefaultMargin, kDefaultBoardSize,kDefaultSquareWidth,
+                                 kDefaultInfoHeight,kDefaultKeyOverlayW,
+                                 kDefaultKeyOverlayH)) {
+  ci::app::setWindowSize(kDefaultWindowWidth, kDefaultWindowHeight);
 }
 
 void GameApp::draw() {
@@ -31,17 +36,17 @@ void GameApp::keyDown(KeyEvent event) {
   update();
 }
 
-  void GameApp::keyUp(KeyEvent event) {
-    if (event.getCode() == KeyEvent::KEY_RIGHT) {
-      state.right_key_pressed = false;
-    } else if (event.getCode() == KeyEvent::KEY_LEFT) {
-      state.left_key_pressed = false;
-    } else if (event.getCode() == KeyEvent::KEY_DOWN) {
-      state.down_key_pressed = false;
-    } else if (event.getCode() == KeyEvent::KEY_UP) {
-      state.up_key_pressed = false;
-    }
-    update();
+void GameApp::keyUp(KeyEvent event) {
+  if (event.getCode() == KeyEvent::KEY_RIGHT) {
+    state.right_key_pressed = false;
+  } else if (event.getCode() == KeyEvent::KEY_LEFT) {
+    state.left_key_pressed = false;
+  } else if (event.getCode() == KeyEvent::KEY_DOWN) {
+    state.down_key_pressed = false;
+  } else if (event.getCode() == KeyEvent::KEY_UP) {
+    state.up_key_pressed = false;
   }
+  update();
+}
 
-}  // namespace idealgas
+}  // namespace game

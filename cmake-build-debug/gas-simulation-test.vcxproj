@@ -320,12 +320,19 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\tests\test_main.cc" />
     <ClCompile Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\src\game_state.cc" />
     <ClCompile Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\src\game_app.cc" />
-    <ClCompile Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\tests\rename_this_test_file.cc" />
+    <ClCompile Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\tests\game_app_test.cc" />
+    <ClCompile Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\tests\game_state_test.cc" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\cmake-build-debug\ZERO_CHECK.vcxproj">
       <Project>{C489201A-1EC4-3097-91E0-4F69A78BCB7D}</Project>
       <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\cmake-build-debug\catch2.vcxproj">
+      <Project>{3CF17279-858A-3012-9DE6-05010A3D63E4}</Project>
+      <Name>catch2</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>

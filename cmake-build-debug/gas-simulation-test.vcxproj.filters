@@ -10,7 +10,10 @@
     <ClCompile Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\src\game_app.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\tests\rename_this_test_file.cc">
+    <ClCompile Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\tests\game_app_test.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\tests\game_state_test.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\tests\game_state_test.cc">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{8C592C25-7D8B-3274-B118-255847B224FB}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

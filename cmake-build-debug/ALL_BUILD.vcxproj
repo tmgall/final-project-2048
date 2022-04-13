@@ -166,6 +166,12 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
+    <ProjectReference Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\cmake-build-debug\catch2.vcxproj">
+      <Project>{3CF17279-858A-3012-9DE6-05010A3D63E4}</Project>
+      <Name>catch2</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
     <ProjectReference Include="C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall\cmake-build-debug\gas-simulation.vcxproj">
       <Project>{911540E2-2C01-3281-B566-E6539107DD7F}</Project>
       <Name>gas-simulation</Name>
