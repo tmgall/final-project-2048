@@ -2,6 +2,8 @@
 
 #include "cinder/gl/gl.h"
 #include <vector>
+#include <stdlib.h>
+#include <time.h>
 
 using glm::vec2;
 using std::vector;
@@ -33,30 +35,30 @@ class GameState {
    */
   void Display() const;
 
-  /**
-   * True if the right arrow key is currently being pressed.
-   */
-  bool right_key_pressed = false;
-
-  /**
-   * True if the left arrow key is currently being pressed.
-   */
-  bool left_key_pressed = false;
-
-  /**
-   * True if the up arrow key is currently being pressed.
-   */
-  bool up_key_pressed = false;
-
-  /**
-   * True if the down arrow key is currently being pressed.
-   */
-  bool down_key_pressed = false;
+  enum Input { right, down, left, up };
 
   /**
    * Vector of rectangle objects which represent the tiles on the board.
    */
-  vector<ci::Rectf> tiles;
+  vector<ci::Rectf> tiles_;
+
+  vector<vector<size_t>> tile_values_;
+
+  void SetBoardDimension(size_t board_size);
+
+  void UpdateState(Input input);
+
+  bool MoveRight();
+
+  bool MoveDown();
+
+  bool MoveLeft();
+
+  bool MoveUp();
+
+  void AddRandomNumberToBoard();
+
+  size_t score;
 
 private:
   size_t window_width_;
@@ -70,8 +72,6 @@ private:
 
   void DrawText(const std::string& text, const vec2& pos) const;
 
-  void DrawKeyOverlay() const;
-
   const size_t kDefaultWindowWidth = 1500;
   const size_t kDefaultWindowHeight = 1850;
   const size_t kDefaultMargin = 50;
@@ -80,6 +80,7 @@ private:
   const size_t kDefaultInfoHeight = 400;
   const size_t kDefaultKeyOverlayW = 300;
   const size_t kDefaultKeyOverlayH = 150;
+  const size_t kFourChanceRatio = 4;
 };
 
 }  // namespace game
