@@ -1,5 +1,0 @@
-"C:\Program Files\JetBrains\CLion 2021.3.3\bin\cmake\win\bin\cmake.exe" -G "Visual Studio 14 2015" -Wno-dev C:\Users\tmgal\OneDrive\Desktop\Cinder\my-projects\final-project-tmgall
--- Selecting Windows SDK version 10.0.14393.0 to target Windows 10.0.19043.
--- Configuring done
--- Generating done
--- Build files have been written to: C:/Users/tmgal/OneDrive/Desktop/Cinder/my-projects/final-project-tmgall/cmake-build-debug
