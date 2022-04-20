@@ -1,25 +1,17 @@
 #include "game_state.h"
-#include <iostream>
 
 namespace game {
 
 using glm::vec2;
 
-GameState::GameState() : GameState(kDefaultWindowWidth, kDefaultWindowHeight,
-                                   kDefaultMargin, kDefaultBoardSize,kDefaultSquareWidth,
-                                   kDefaultInfoHeight, kDefaultKeyOverlayW,
-                                   kDefaultKeyOverlayH) {}
-
-GameState::GameState(size_t window_width, size_t window_height, size_t margin, size_t board_size, size_t square_width,
-                     size_t info_height, size_t key_overlay_w, size_t key_overlay_h) {
+GameState::GameState(size_t window_width, size_t window_height, size_t margin, size_t board_size,
+                     size_t info_height) {
   window_width_ = window_width;
   window_height_ = window_height;
   margin_ = margin;
   board_size_ = board_size;
-  square_width_ = square_width;
+  square_width_ = (window_width - 2 * margin) / board_size;
   info_height_ = info_height;
-  key_overlay_w_ = key_overlay_w;
-  key_overlay_h_ = key_overlay_h;
   tiles_ = vector<ci::Rectf>();
   for (size_t i = 0; i < board_size_; i++) {
     for (size_t j = 0; j < board_size_; j++) {
@@ -48,7 +40,7 @@ GameState::GameState(size_t window_width, size_t window_height, size_t margin, s
   } else {
     tile_values_[rand2 % board_size][rand2 / board_size_] = 2;
   }
-  score = 0;
+  score_ = 0;
 }
 
 void GameState::Display() const {
@@ -67,27 +59,17 @@ void GameState::Display() const {
       DrawText(value, vec2(x_pos, y_pos));
     }
   }
-  DrawText("Score: " + std::to_string(score), vec2(window_width_ / 2, 20));
+  DrawText("Score: " + std::to_string(score_), vec2(window_width_ / 2, 20));
 }
 
-void GameState::DrawText(const std::string& text, const vec2& pos) const {
-  static ci::Font f("roboto regular", 160);
-  ci::gl::drawStringCentered(text, pos, ci::Color("white"), f);
-}
-
-void GameState::SetBoardDimension(size_t board_size) {
-  board_size_ = board_size;
-  square_width_ = (window_width_ - 2 * margin_) / board_size;
-  for (size_t i = 0; i < board_size_; i++) {
-    for (size_t j = 0; j < board_size_; j++) {
-      vec2 top_left(margin_ + square_width_ * i, info_height_ + square_width_ * j);
-      vec2 bottom_right(margin_ + square_width_ * (i + 1), info_height_ + square_width_ * (j + 1));
-      tiles_.emplace_back(ci::Rectf(top_left, bottom_right));
-    }
+void GameState::ExecuteInput(GameState::Input input) {
+  bool board_changed = UpdateState(input);
+  if (board_changed) {
+    AddRandomNumberToBoard();
   }
 }
 
-void GameState::UpdateState(GameState::Input input) {
+bool GameState::UpdateState(GameState::Input input) {
   bool board_changed = true;
   if (input == right) {
     board_changed = MoveRight();
@@ -98,9 +80,7 @@ void GameState::UpdateState(GameState::Input input) {
   } else if (input == down) {
     board_changed = MoveDown();
   }
-  if (board_changed) {
-    AddRandomNumberToBoard();
-  }
+  return board_changed;
 }
 
 bool GameState::MoveRight() {
@@ -113,7 +93,7 @@ bool GameState::MoveRight() {
       if (cur_val != 0) {
         if (cur_val == last_val) {
           tile_values_[row][next_col_spot + 1] = last_val * 2;
-          score += last_val * 2;
+          score_ += last_val * 2;
           tile_values_[row][col] = 0;
           last_val = 0;
           board_changed = true;
@@ -142,7 +122,7 @@ bool GameState::MoveLeft() {
       if (cur_val != 0) {
         if (cur_val == last_val) {
           tile_values_[row][next_col_spot - 1] = last_val * 2;
-          score += last_val * 2;
+          score_ += last_val * 2;
           tile_values_[row][col] = 0;
           last_val = 0;
           board_changed = true;
@@ -171,7 +151,7 @@ bool GameState::MoveUp() {
       if (cur_val != 0) {
         if (cur_val == last_val) {
           tile_values_[next_row_spot - 1][col] = last_val * 2;
-          score += last_val * 2;
+          score_ += last_val * 2;
           tile_values_[row][col] = 0;
           last_val = 0;
           board_changed = true;
@@ -200,7 +180,7 @@ bool GameState::MoveDown() {
       if (cur_val != 0) {
         if (cur_val == last_val) {
           tile_values_[next_row_spot + 1][col] = last_val * 2;
-          score += last_val * 2;
+          score_ += last_val * 2;
           tile_values_[row][col] = 0;
           last_val = 0;
           board_changed = true;
@@ -235,6 +215,11 @@ void GameState::AddRandomNumberToBoard() {
   } else {
     tile_values_[pos.first][pos.second] = 2;
   }
+}
+
+void GameState::DrawText(const std::string& text, const vec2& pos) const {
+  static ci::Font f("roboto regular", 160);
+  ci::gl::drawStringCentered(text, pos, ci::Color("white"), f);
 }
 
 }  // namespace game

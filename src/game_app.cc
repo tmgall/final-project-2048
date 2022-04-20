@@ -4,9 +4,7 @@ namespace game {
 
 GameApp::GameApp() :
                  state(GameState(kDefaultWindowWidth, kDefaultWindowHeight,
-                                 kDefaultMargin, kDefaultBoardSize,kDefaultSquareWidth,
-                                 kDefaultInfoHeight,kDefaultKeyOverlayW,
-                                 kDefaultKeyOverlayH)) {
+                                 kDefaultMargin, kDefaultBoardSize,kDefaultInfoHeight)) {
   ci::app::setWindowSize(kDefaultWindowWidth, kDefaultWindowHeight);
 }
 
@@ -22,13 +20,13 @@ void GameApp::update() {
 
 void GameApp::keyDown(KeyEvent event) {
   if (event.getCode() == KeyEvent::KEY_RIGHT) {
-    state.UpdateState(GameState::right);
+    state.ExecuteInput(GameState::right);
   } else if (event.getCode() == KeyEvent::KEY_LEFT) {
-    state.UpdateState(GameState::left);
+    state.ExecuteInput(GameState::left);
   } else if (event.getCode() == KeyEvent::KEY_DOWN) {
-    state.UpdateState(GameState::down);
+    state.ExecuteInput(GameState::down);
   } else if (event.getCode() == KeyEvent::KEY_UP) {
-    state.UpdateState(GameState::up);
+    state.ExecuteInput(GameState::up);
   }
   update();
 }

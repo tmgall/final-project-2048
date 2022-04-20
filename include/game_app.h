@@ -1,7 +1,5 @@
 #pragma once
 
-#include <iostream>
-
 #include "cinder/app/App.h"
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
@@ -27,7 +25,7 @@ class GameApp : public ci::app::App {
   void keyDown(KeyEvent event) override;
 
   /**
-   * The current state of the game.
+   * The current board state of the game.
    */
   GameState state;
 
@@ -35,11 +33,8 @@ private:
   static const size_t kDefaultWindowWidth = 1500;
   static const size_t kDefaultWindowHeight = 1850;
   static const size_t kDefaultMargin = 50;
-  static const size_t kDefaultBoardSize = 8;
-  static const size_t kDefaultSquareWidth = 175;
+  static const size_t kDefaultBoardSize = 4;
   static const size_t kDefaultInfoHeight = 400;
-  static const size_t kDefaultKeyOverlayW = 300;
-  static const size_t kDefaultKeyOverlayH = 150;
 };
 
 }  // namespace game
