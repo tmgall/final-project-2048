@@ -461,25 +461,3 @@ TEST_CASE("Board does not update with new number when unchanged") {
     REQUIRE(BoardsEqual(gs.tile_values_, expected));
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
