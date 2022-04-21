@@ -14,7 +14,7 @@ void GameApp::draw() {
   state.Display();
 }
 
-void GameApp::update() {
+void GameApp::update() { // don't need
   state.Display();
 }
 

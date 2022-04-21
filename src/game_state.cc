@@ -5,7 +5,7 @@ namespace game {
 using glm::vec2;
 
 GameState::GameState(size_t window_width, size_t window_height, size_t margin, size_t board_size,
-                     size_t info_height) {
+                     size_t info_height) { // C++ style
   window_width_ = window_width;
   window_height_ = window_height;
   margin_ = margin;
