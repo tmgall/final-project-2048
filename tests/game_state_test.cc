@@ -28,19 +28,19 @@ bool BoardsEqual(const vector<vector<size_t>>& b1, const vector<vector<size_t>>&
 
 TEST_CASE("GameState constructor") {
   size_t board_size = 2;
-  GameState gs(1500, 1850, 50, board_size, 400);
+  GameState gs2(1500, 1850, 50, board_size, 400);
   SECTION("Correct initial values") {
     size_t first_val = 0;
     size_t second_val = 0;
     size_t nonzero_vals = 0;
     for (size_t i = 0; i < board_size; i++) {
       for (size_t j = 0; j < board_size; j++) {
-        if (gs.tile_values_[i][j] != 0) {
+        if (gs2.tile_values_[i][j] != 0) {
           nonzero_vals++;
           if (first_val == 0) {
-            first_val = gs.tile_values_[i][j];
+            first_val = gs2.tile_values_[i][j];
           } else {
-            second_val = gs.tile_values_[i][j];
+            second_val = gs2.tile_values_[i][j];
           }
         }
       }
@@ -49,16 +49,66 @@ TEST_CASE("GameState constructor") {
     REQUIRE((second_val == 2 || second_val == 4));
     REQUIRE(nonzero_vals == 2);
   }
-  SECTION("Correct rectangle locations and square width for display") {
+  SECTION("Correct rectangle locations and square width for 2x2 display") {
     vector<size_t> correct_x1s = {50, 50, 750, 750};
     vector<size_t> correct_x2s = {750, 750, 1450, 1450};
     vector<size_t> correct_y1s = {400, 1100, 400, 1100};
     vector<size_t> correct_y2s = {1100, 1800, 1100, 1800};
     for (size_t i = 0; i < board_size * board_size; i++) {
-      REQUIRE(gs.tiles_[i].x1 == correct_x1s[i]);
-      REQUIRE(gs.tiles_[i].x2 == correct_x2s[i]);
-      REQUIRE(gs.tiles_[i].y1 == correct_y1s[i]);
-      REQUIRE(gs.tiles_[i].y2 == correct_y2s[i]);
+      REQUIRE(gs2.tiles_[i].x1 == correct_x1s[i]);
+      REQUIRE(gs2.tiles_[i].x2 == correct_x2s[i]);
+      REQUIRE(gs2.tiles_[i].y1 == correct_y1s[i]);
+      REQUIRE(gs2.tiles_[i].y2 == correct_y2s[i]);
+    }
+  }
+  board_size = 3;
+  GameState gs3(1500, 1850, 50, board_size, 400);
+  SECTION("Correct rectangle locations and square width for 3x3 display") {
+    vector<size_t> correct_x1s = {50, 50, 50, 516, 516, 516, 982, 982, 982};
+    vector<size_t> correct_x2s = {516, 516, 516, 982, 982, 982, 1448, 1448, 1448};
+    vector<size_t> correct_y1s = {400, 866, 1332, 400, 866, 1332, 400, 866, 1332};
+    vector<size_t> correct_y2s = {866, 1332, 1798, 866, 1332, 1798, 866, 1332, 1798};
+    for (size_t i = 0; i < board_size * board_size; i++) {
+      REQUIRE(gs3.tiles_[i].x1 == correct_x1s[i]);
+      REQUIRE(gs3.tiles_[i].x2 == correct_x2s[i]);
+      REQUIRE(gs3.tiles_[i].y1 == correct_y1s[i]);
+      REQUIRE(gs3.tiles_[i].y2 == correct_y2s[i]);
+    }
+  }
+  board_size = 4;
+  GameState gs4(1500, 1850, 50, board_size, 400);
+  SECTION("Correct rectangle locations and square width for 4x4 display") {
+    vector<size_t> correct_x1s = {50, 50, 50, 50, 400, 400, 400, 400,
+                                  750, 750, 750, 750, 1100, 1100, 1100, 1100};
+    vector<size_t> correct_x2s = {400, 400, 400, 400, 750, 750, 750, 750,
+                                  1100, 1100, 1100, 1100, 1450, 1450, 1450, 1450};
+    vector<size_t> correct_y1s = {400, 750, 1100, 1450, 400, 750, 1100, 1450,
+                                  400, 750, 1100, 1450, 400, 750, 1100, 1450};
+    vector<size_t> correct_y2s = {750, 1100, 1450, 1800, 750, 1100, 1450, 1800,
+                                  750, 1100, 1450, 1800, 750, 1100, 1450, 1800};
+    for (size_t i = 0; i < board_size * board_size; i++) {
+      REQUIRE(gs4.tiles_[i].x1 == correct_x1s[i]);
+      REQUIRE(gs4.tiles_[i].x2 == correct_x2s[i]);
+      REQUIRE(gs4.tiles_[i].y1 == correct_y1s[i]);
+      REQUIRE(gs4.tiles_[i].y2 == correct_y2s[i]);
+    }
+  }
+  board_size = 5;
+  GameState gs5(1500, 1850, 50, board_size, 400);
+  SECTION("Correct rectangle locations and square width for 5x5 display") {
+    vector<size_t> correct_x1s = {50, 50, 50, 50, 50, 330, 330, 330, 330, 330, 610, 610, 610, 610, 610,
+                                  890, 890, 890, 890, 890, 1170, 1170, 1170, 1170, 1170};
+    vector<size_t> correct_x2s = {330, 330, 330, 330, 330, 610, 610, 610, 610, 610, 890, 890, 890, 890, 890,
+                                  1170, 1170, 1170, 1170, 1170, 1450, 1450, 1450, 1450, 1450};
+    vector<size_t> correct_y1s = {400, 680, 960, 1240, 1520, 400, 680, 960, 1240, 1520, 400, 680, 960, 1240, 1520,
+                                  400, 680, 960, 1240, 1520, 400, 680, 960, 1240, 1520};
+    vector<size_t> correct_y2s = {680, 960, 1240, 1520, 1800, 680, 960, 1240, 1520, 1800, 680, 960, 1240, 1520, 1800,
+                                  680, 960, 1240, 1520, 1800, 680, 960, 1240, 1520, 1800};
+    for (size_t i = 0; i < board_size * board_size; i++) {
+      REQUIRE(gs5.tiles_[i].x1 == correct_x1s[i]);
+      REQUIRE(gs5.tiles_[i].x2 == correct_x2s[i]);
+      REQUIRE(gs5.tiles_[i].y1 == correct_y1s[i]);
+      REQUIRE(gs5.tiles_[i].y2 == correct_y2s[i]);
     }
   }
 }

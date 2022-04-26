@@ -55,14 +55,14 @@ list(APPEND SOURCE_FILES src/game_state.cc
 list(APPEND TEST_FILES tests/game_app_test.cc tests/game_state_test.cc)
 
 ci_make_app(
-        APP_NAME        gas-simulation
+        APP_NAME        run-game
         CINDER_PATH     ${CINDER_PATH}
         SOURCES         apps/cinder_app_main.cc ${SOURCE_FILES}
         INCLUDES        include
 )
 
 ci_make_app(
-        APP_NAME        gas-simulation-test
+        APP_NAME        run-game-test
         CINDER_PATH     ${CINDER_PATH}
         SOURCES         tests/test_main.cc ${SOURCE_FILES} ${TEST_FILES}
         INCLUDES        include
@@ -70,5 +70,5 @@ ci_make_app(
 )
 
 if(MSVC)
-    set_property(TARGET gas-simulation-test APPEND_STRING PROPERTY LINK_FLAGS " /SUBSYSTEM:CONSOLE")
+    set_property(TARGET run-game-test APPEND_STRING PROPERTY LINK_FLAGS " /SUBSYSTEM:CONSOLE")
 endif()

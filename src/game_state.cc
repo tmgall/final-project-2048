@@ -56,7 +56,8 @@ void GameState::Display() const {
       if (tile_values_[i][j] != 0) {
         value = std::to_string(tile_values_[i][j]);
       }
-      DrawText(value, vec2(x_pos, y_pos));
+      int offset = board_size_ == 2 ? 50 : (board_size_ == 3 ? 20 : (board_size_ == 4 ? 0 : -15));
+      DrawText(value, vec2(x_pos, offset + y_pos));
     }
   }
   DrawText("Score: " + std::to_string(score_), vec2(window_width_ / 2, 20));
