@@ -4,14 +4,9 @@ namespace game {
 
 using glm::vec2;
 
-GameState::GameState(size_t window_width, size_t window_height, size_t margin, size_t board_size,
-                     size_t info_height) { // C++ style
-  window_width_ = window_width;
-  window_height_ = window_height;
-  margin_ = margin;
-  board_size_ = board_size;
-  square_width_ = (window_width - 2 * margin) / board_size;
-  info_height_ = info_height;
+GameState::GameState(size_t window_width, size_t window_height, size_t margin, size_t board_size, size_t info_height) :
+    window_width_(window_width), window_height_(window_height), margin_(margin), board_size_(board_size),
+    square_width_((window_width - 2 * margin) / board_size), info_height_(info_height) {
   tiles_ = vector<ci::Rectf>();
   for (size_t i = 0; i < board_size_; i++) {
     for (size_t j = 0; j < board_size_; j++) {
@@ -44,9 +39,13 @@ GameState::GameState(size_t window_width, size_t window_height, size_t margin, s
 }
 
 void GameState::Display() const {
-  ci::gl::color(ci::Color("white"));
-  for (const ci::Rectf& tile : tiles_) {
-    ci::gl::drawStrokedRect(tile);
+  for (size_t i = 0; i < board_size_; i++) {
+    for (size_t j = 0; j < board_size_; j++) {
+      ci::gl::color(ci::Color(0.2f, 0.2f, 0.2f));
+      ci::gl::drawStrokedRect(tiles_[j * board_size_ + i]);
+      ci::gl::color(GetTileColor(tile_values_[i][j]));
+      ci::gl::drawSolidRect(tiles_[j * board_size_ + i]);
+    }
   }
   for (size_t i = 0; i < board_size_; i++) {
     for (size_t j = 0; j < board_size_; j++) {
@@ -220,7 +219,18 @@ void GameState::AddRandomNumberToBoard() {
 
 void GameState::DrawText(const std::string& text, const vec2& pos) const {
   static ci::Font f("roboto regular", 160);
-  ci::gl::drawStringCentered(text, pos, ci::Color("white"), f);
+  ci::gl::drawStringCentered(text, pos, ci::Color(0.2f, 0.2f, 0.2f), f);
+}
+
+ci::Color GameState::GetTileColor(size_t val) const {
+  if (val == 0) {
+    return ci::Color(0.92f, 0.83f, 0.2f);
+  } else if ((val & (val - 1)) != 0) {
+    return ci::Color(0.92f, 0.0f, 0.2f);
+  } else {
+    double power = log(val) / log(2);
+    return ci::Color(0.92f, (float) (0.83f - 0.05 * power), 0.2f);
+  }
 }
 
 }  // namespace game

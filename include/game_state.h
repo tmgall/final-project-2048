@@ -1,9 +1,11 @@
 #pragma once
 
+#include "cinder/Color.h"
 #include "cinder/gl/gl.h"
 #include <vector>
 #include <stdlib.h>
 #include <time.h>
+#include <math.h>
 
 using glm::vec2;
 using std::vector;
@@ -79,6 +81,7 @@ private:
   bool MoveUp();
   void AddRandomNumberToBoard();
   void DrawText(const std::string& text, const vec2& pos) const;
+  ci::Color GetTileColor(size_t val) const;
 };
 
 }  // namespace game

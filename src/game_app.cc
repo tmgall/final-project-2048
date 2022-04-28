@@ -9,7 +9,7 @@ GameApp::GameApp() :
 }
 
 void GameApp::draw() {
-  ci::Color background_color("black");
+  ci::Color background_color("gray");
   ci::gl::clear(background_color);
   state.Display();
 }
