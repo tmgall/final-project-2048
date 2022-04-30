@@ -511,3 +511,28 @@ TEST_CASE("Board does not update with new number when unchanged") {
     REQUIRE(BoardsEqual(gs.tile_values_, expected));
   }
 }
+
+TEST_CASE("Test game over") {
+  size_t board_size = 4;
+  GameState gs(1500, 1850, 50, board_size, 400);
+  SECTION("Game over on right move") {
+    gs.tile_values_ = {{128, 64, 128, 0}, {32, 16, 32, 16}, {4, 8, 4, 8}, {8, 4, 8, 4}};
+    gs.ExecuteInput(GameState::right);
+    REQUIRE(gs.finished_);
+  }
+  SECTION("Game over on left move") {
+    gs.tile_values_ = {{0, 128, 64, 128}, {32, 16, 32, 16}, {4, 8, 4, 8}, {8, 4, 8, 4}};
+    gs.ExecuteInput(GameState::left);
+    REQUIRE(gs.finished_);
+  }
+  SECTION("Game over on down move") {
+    gs.tile_values_ = {{32, 8, 2, 4}, {64, 16, 4, 2}, {32, 8, 2, 4}, {0, 16, 4, 2}};
+    gs.ExecuteInput(GameState::down);
+    REQUIRE(gs.finished_);
+  }
+  SECTION("Game over on up move") {
+    gs.tile_values_ = {{0, 8, 2, 4}, {32, 16, 4, 2}, {64, 8, 2, 4}, {32, 16, 4, 2}};
+    gs.ExecuteInput(GameState::up);
+    REQUIRE(gs.finished_);
+  }
+}

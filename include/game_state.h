@@ -65,6 +65,11 @@ class GameState {
    */
   size_t score_;
 
+  /**
+   * True if the game is finished.
+   */
+  bool finished_;
+
 private:
   size_t window_width_;
   size_t window_height_;
@@ -82,6 +87,7 @@ private:
   void AddRandomNumberToBoard();
   void DrawText(const std::string& text, const vec2& pos) const;
   ci::Color GetTileColor(size_t val) const;
+  bool GameFinished();
 };
 
 }  // namespace game

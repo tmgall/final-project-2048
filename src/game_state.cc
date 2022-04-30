@@ -6,7 +6,7 @@ using glm::vec2;
 
 GameState::GameState(size_t window_width, size_t window_height, size_t margin, size_t board_size, size_t info_height) :
     window_width_(window_width), window_height_(window_height), margin_(margin), board_size_(board_size),
-    square_width_((window_width - 2 * margin) / board_size), info_height_(info_height) {
+    square_width_((window_width - 2 * margin) / board_size), info_height_(info_height), score_(0), finished_(false) {
   tiles_ = vector<ci::Rectf>();
   for (size_t i = 0; i < board_size_; i++) {
     for (size_t j = 0; j < board_size_; j++) {
@@ -60,12 +60,18 @@ void GameState::Display() const {
     }
   }
   DrawText("Score: " + std::to_string(score_), vec2(window_width_ / 2, 20));
+  if (finished_) {
+    DrawText("Game Over", vec2(window_width_ / 2, 200));
+  }
 }
 
 void GameState::ExecuteInput(GameState::Input input) {
   bool board_changed = UpdateState(input);
   if (board_changed) {
     AddRandomNumberToBoard();
+  }
+  if (GameFinished()) {
+    finished_ = true;
   }
 }
 
@@ -231,6 +237,26 @@ ci::Color GameState::GetTileColor(size_t val) const {
     double power = log(val) / log(2);
     return ci::Color(0.92f, (float) (0.83f - 0.05 * power), 0.2f);
   }
+}
+
+bool GameState::GameFinished() {
+  for (int i = 0; i < (int) board_size_; i++) {
+    for (int j = 0; j < (int) board_size_; j++) {
+      size_t cur_val = tile_values_[i][j];
+      if (cur_val == 0) {
+        return false;
+      } else if (i > 0 && tile_values_[i - 1][j] == cur_val) {
+        return false;
+      } else if (i < (int) (board_size_ - 1) && tile_values_[i + 1][j] == cur_val) {
+        return false;
+      } else if (j > 0 && tile_values_[i][j - 1] == cur_val) {
+        return false;
+      } else if (j < (int) (board_size_ - 1) && tile_values_[i][j + 1] == cur_val) {
+        return false;
+      }
+    }
+  }
+  return true;
 }
 
 }  // namespace game
