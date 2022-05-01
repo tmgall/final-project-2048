@@ -21,7 +21,6 @@ class GameApp : public ci::app::App {
   GameApp();
 
   void draw() override;
-  void update() override;
   void keyDown(KeyEvent event) override;
 
   /**

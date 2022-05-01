@@ -13,10 +13,6 @@ void GameApp::draw() {
   state.Display();
 }
 
-void GameApp::update() { // don't need
-  state.Display();
-}
-
 void GameApp::keyDown(KeyEvent event) {
   if (event.getCode() == KeyEvent::KEY_RIGHT) {
     if (state.in_menu_) {
