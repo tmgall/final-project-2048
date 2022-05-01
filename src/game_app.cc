@@ -20,13 +20,33 @@ void GameApp::update() { // don't need
 
 void GameApp::keyDown(KeyEvent event) {
   if (event.getCode() == KeyEvent::KEY_RIGHT) {
-    state.ExecuteInput(GameState::right);
+    if (state.in_menu_) {
+      state.SelectGame(3);
+      state.in_menu_ = false;
+    } else {
+      state.ExecuteInput(GameState::right);
+    }
   } else if (event.getCode() == KeyEvent::KEY_LEFT) {
-    state.ExecuteInput(GameState::left);
+    if (state.in_menu_) {
+      state.SelectGame(2);
+      state.in_menu_ = false;
+    } else {
+      state.ExecuteInput(GameState::left);
+    }
   } else if (event.getCode() == KeyEvent::KEY_DOWN) {
-    state.ExecuteInput(GameState::down);
+    if (state.in_menu_) {
+      state.SelectGame(4);
+      state.in_menu_ = false;
+    } else {
+      state.ExecuteInput(GameState::down);
+    }
   } else if (event.getCode() == KeyEvent::KEY_UP) {
-    state.ExecuteInput(GameState::up);
+    if (state.in_menu_) {
+      state.SelectGame(5);
+      state.in_menu_ = false;
+    } else {
+      state.ExecuteInput(GameState::up);
+    }
   }
   update();
 }

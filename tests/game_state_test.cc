@@ -29,6 +29,7 @@ bool BoardsEqual(const vector<vector<size_t>>& b1, const vector<vector<size_t>>&
 TEST_CASE("GameState constructor") {
   size_t board_size = 2;
   GameState gs2(1500, 1850, 50, board_size, 400);
+  gs2.SelectGame(board_size);
   SECTION("Correct initial values") {
     size_t first_val = 0;
     size_t second_val = 0;
@@ -63,6 +64,7 @@ TEST_CASE("GameState constructor") {
   }
   board_size = 3;
   GameState gs3(1500, 1850, 50, board_size, 400);
+  gs3.SelectGame(board_size);
   SECTION("Correct rectangle locations and square width for 3x3 display") {
     vector<size_t> correct_x1s = {50, 50, 50, 516, 516, 516, 982, 982, 982};
     vector<size_t> correct_x2s = {516, 516, 516, 982, 982, 982, 1448, 1448, 1448};
@@ -77,6 +79,7 @@ TEST_CASE("GameState constructor") {
   }
   board_size = 4;
   GameState gs4(1500, 1850, 50, board_size, 400);
+  gs4.SelectGame(board_size);
   SECTION("Correct rectangle locations and square width for 4x4 display") {
     vector<size_t> correct_x1s = {50, 50, 50, 50, 400, 400, 400, 400,
                                   750, 750, 750, 750, 1100, 1100, 1100, 1100};
@@ -95,6 +98,7 @@ TEST_CASE("GameState constructor") {
   }
   board_size = 5;
   GameState gs5(1500, 1850, 50, board_size, 400);
+  gs5.SelectGame(board_size);
   SECTION("Correct rectangle locations and square width for 5x5 display") {
     vector<size_t> correct_x1s = {50, 50, 50, 50, 50, 330, 330, 330, 330, 330, 610, 610, 610, 610, 610,
                                   890, 890, 890, 890, 890, 1170, 1170, 1170, 1170, 1170};
@@ -116,6 +120,7 @@ TEST_CASE("GameState constructor") {
 TEST_CASE("GameState UpdateState updates right move board correctly") {
   size_t board_size = 4;
   GameState gs(1500, 1850, 50, board_size, 400);
+  gs.SelectGame(board_size);
   SECTION("Single tile shifts right") {
     gs.tile_values_ = {{2, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
     bool board_changed = gs.UpdateState(GameState::right);
@@ -177,6 +182,7 @@ TEST_CASE("GameState UpdateState updates right move board correctly") {
 TEST_CASE("GameState UpdateState updates score correctly right move") {
   size_t board_size = 4;
   GameState gs(1500, 1850, 50, board_size, 400);
+  gs.SelectGame(board_size);
   SECTION("Single score update right") {
     gs.tile_values_ = {{2, 2, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
     gs.UpdateState(GameState::right);
@@ -192,6 +198,7 @@ TEST_CASE("GameState UpdateState updates score correctly right move") {
 TEST_CASE("GameState UpdateState updates left move board correctly") {
   size_t board_size = 4;
   GameState gs(1500, 1850, 50, board_size, 400);
+  gs.SelectGame(board_size);
   SECTION("Single tile shifts left") {
     gs.tile_values_ = {{0, 0, 0, 2}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
     bool board_changed = gs.UpdateState(GameState::left);
@@ -253,6 +260,7 @@ TEST_CASE("GameState UpdateState updates left move board correctly") {
 TEST_CASE("GameState UpdateState updates score correctly left move") {
   size_t board_size = 4;
   GameState gs(1500, 1850, 50, board_size, 400);
+  gs.SelectGame(board_size);
   SECTION("Single score update left") {
     gs.tile_values_ = {{2, 2, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
     gs.UpdateState(GameState::left);
@@ -268,6 +276,7 @@ TEST_CASE("GameState UpdateState updates score correctly left move") {
 TEST_CASE("GameState UpdateState updates down move board correctly") {
   size_t board_size = 4;
   GameState gs(1500, 1850, 50, board_size, 400);
+  gs.SelectGame(board_size);
   SECTION("Single tile shifts down") {
     gs.tile_values_ = {{2, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
     bool board_changed = gs.UpdateState(GameState::down);
@@ -330,6 +339,7 @@ TEST_CASE("GameState UpdateState updates down move board correctly") {
 TEST_CASE("GameState UpdateState updates score correctly down move") {
   size_t board_size = 4;
   GameState gs(1500, 1850, 50, board_size, 400);
+  gs.SelectGame(board_size);
   SECTION("Single score update down") {
     gs.tile_values_ = {{2, 0, 0, 0}, {2, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
     gs.UpdateState(GameState::down);
@@ -345,6 +355,7 @@ TEST_CASE("GameState UpdateState updates score correctly down move") {
 TEST_CASE("GameState UpdateState updates up move board correctly") {
   size_t board_size = 4;
   GameState gs(1500, 1850, 50, board_size, 400);
+  gs.SelectGame(board_size);
   SECTION("Single tile shifts up") {
     gs.tile_values_ = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {2, 0, 0, 0}};
     bool board_changed = gs.UpdateState(GameState::up);
@@ -406,6 +417,7 @@ TEST_CASE("GameState UpdateState updates up move board correctly") {
 TEST_CASE("GameState UpdateState updates score correctly up move") {
   size_t board_size = 4;
   GameState gs(1500, 1850, 50, board_size, 400);
+  gs.SelectGame(board_size);
   SECTION("Single score update up") {
     gs.tile_values_ = {{2, 0, 0, 0}, {2, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
     gs.UpdateState(GameState::up);
@@ -421,6 +433,7 @@ TEST_CASE("GameState UpdateState updates score correctly up move") {
 TEST_CASE("Random new number updates correctly using ExecuteInput") {
   size_t board_size = 4;
   GameState gs(1500, 1850, 50, board_size, 400);
+  gs.SelectGame(board_size);
   SECTION("Board updates right") {
     gs.tile_values_ = {{2, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
     gs.ExecuteInput(GameState::right);
@@ -486,6 +499,7 @@ TEST_CASE("Random new number updates correctly using ExecuteInput") {
 TEST_CASE("Board does not update with new number when unchanged") {
   size_t board_size = 4;
   GameState gs(1500, 1850, 50, board_size, 400);
+  gs.SelectGame(board_size);
   SECTION("New number is not added if board doesn't change right") {
     gs.tile_values_ = {{8, 16, 8, 16}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
     vector<vector<size_t>> expected = {{8, 16, 8, 16}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
@@ -515,6 +529,7 @@ TEST_CASE("Board does not update with new number when unchanged") {
 TEST_CASE("Test game over") {
   size_t board_size = 4;
   GameState gs(1500, 1850, 50, board_size, 400);
+  gs.SelectGame(board_size);
   SECTION("Game over on right move") {
     gs.tile_values_ = {{128, 64, 128, 0}, {32, 16, 32, 16}, {4, 8, 4, 8}, {8, 4, 8, 4}};
     gs.ExecuteInput(GameState::right);

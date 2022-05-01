@@ -5,63 +5,38 @@ namespace game {
 using glm::vec2;
 
 GameState::GameState(size_t window_width, size_t window_height, size_t margin, size_t board_size, size_t info_height) :
-    window_width_(window_width), window_height_(window_height), margin_(margin), board_size_(board_size),
-    square_width_((window_width - 2 * margin) / board_size), info_height_(info_height), score_(0), finished_(false) {
-  tiles_ = vector<ci::Rectf>();
-  for (size_t i = 0; i < board_size_; i++) {
-    for (size_t j = 0; j < board_size_; j++) {
-      vec2 top_left(margin_ + square_width_ * i, info_height_ + square_width_ * j);
-      vec2 bottom_right(margin_ + square_width_ * (i + 1), info_height_ + square_width_ * (j + 1));
-      tiles_.emplace_back(ci::Rectf(top_left, bottom_right));
-    }
-  }
-  tile_values_ = vector<vector<size_t>>(board_size_, vector<size_t>(board_size_, 0));
-  srand((unsigned int) time(NULL));
-  size_t rand1 = 0;
-  size_t rand2 = 0;
-  while (rand1 == rand2) {
-    rand1 = rand() % (board_size_ * board_size_);
-    rand2 = rand() % (board_size_ * board_size_);
-  }
-  bool four1 = (rand() % kFourChanceRatio) == 0;
-  bool four2 = (rand() % kFourChanceRatio) == 0;
-  if (four1) {
-    tile_values_[rand1 % board_size][rand1 / board_size_] = 4;
-  } else {
-    tile_values_[rand1 % board_size][rand1 / board_size_] = 2;
-  }
-  if (four2) {
-    tile_values_[rand2 % board_size][rand2 / board_size_] = 4;
-  } else {
-    tile_values_[rand2 % board_size][rand2 / board_size_] = 2;
-  }
-  score_ = 0;
+    window_width_(window_width), window_height_(window_height), margin_(margin), info_height_(info_height),
+    score_(0), finished_(false), in_menu_(true), tiles_(vector<ci::Rectf>()) {
 }
 
 void GameState::Display() const {
-  for (size_t i = 0; i < board_size_; i++) {
-    for (size_t j = 0; j < board_size_; j++) {
-      ci::gl::color(ci::Color(0.2f, 0.2f, 0.2f));
-      ci::gl::drawStrokedRect(tiles_[j * board_size_ + i]);
-      ci::gl::color(GetTileColor(tile_values_[i][j]));
-      ci::gl::drawSolidRect(tiles_[j * board_size_ + i]);
-    }
-  }
-  for (size_t i = 0; i < board_size_; i++) {
-    for (size_t j = 0; j < board_size_; j++) {
-      size_t x_pos = margin_ + j * square_width_ + square_width_ / 2;
-      size_t y_pos = info_height_ + i * square_width_ + square_width_ / 3;
-      std::string value;
-      if (tile_values_[i][j] != 0) {
-        value = std::to_string(tile_values_[i][j]);
+  if (in_menu_) {
+    DisplayMenu();
+  } else {
+    for (size_t i = 0; i < board_size_; i++) {
+      for (size_t j = 0; j < board_size_; j++) {
+        ci::gl::color(ci::Color(0.2f, 0.2f, 0.2f));
+        ci::gl::drawStrokedRect(tiles_[j * board_size_ + i]);
+        ci::gl::color(GetTileColor(tile_values_[i][j]));
+        ci::gl::drawSolidRect(tiles_[j * board_size_ + i]);
       }
-      int offset = board_size_ == 2 ? 50 : (board_size_ == 3 ? 20 : (board_size_ == 4 ? 0 : -15));
-      DrawText(value, vec2(x_pos, offset + y_pos));
     }
-  }
-  DrawText("Score: " + std::to_string(score_), vec2(window_width_ / 2, 20));
-  if (finished_) {
-    DrawText("Game Over", vec2(window_width_ / 2, 200));
+    for (size_t i = 0; i < board_size_; i++) {
+      for (size_t j = 0; j < board_size_; j++) {
+        size_t x_pos = margin_ + j * square_width_ + square_width_ / 2;
+        size_t y_pos = info_height_ + i * square_width_ + square_width_ / 3;
+        std::string value;
+        if (tile_values_[i][j] != 0) {
+          value = std::to_string(tile_values_[i][j]);
+        }
+        int offset = board_size_ == 2 ? 50 : (board_size_ == 3 ? 20 : (board_size_ == 4 ? 0 : -15));
+        DrawText(value, vec2(x_pos, offset + y_pos));
+      }
+    }
+    DrawText("Score: " + std::to_string(score_), vec2(window_width_ / 2, 20));
+    if (finished_) {
+      DrawText("Game Over", vec2(window_width_ / 2, 200));
+    }
   }
 }
 
@@ -230,12 +205,12 @@ void GameState::DrawText(const std::string& text, const vec2& pos) const {
 
 ci::Color GameState::GetTileColor(size_t val) const {
   if (val == 0) {
-    return ci::Color(0.92f, 0.83f, 0.2f);
+    return {0.92f, 0.83f, 0.2f};
   } else if ((val & (val - 1)) != 0) {
-    return ci::Color(0.92f, 0.0f, 0.2f);
+    return {0.92f, 0.0f, 0.2f};
   } else {
     double power = log(val) / log(2);
-    return ci::Color(0.92f, (float) (0.83f - 0.05 * power), 0.2f);
+    return {0.92f, (float) (0.83f - 0.05 * power), 0.2f};
   }
 }
 
@@ -257,6 +232,59 @@ bool GameState::GameFinished() {
     }
   }
   return true;
+}
+
+void GameState::DisplayMenu() const {
+  DrawText("2048", vec2(window_width_ / 2, 20));
+  DrawText("By Tyler Gall", vec2(window_width_ / 2, 200));
+  ci::gl::color(ci::Color(0.92f, 0.83f, 0.2f));
+  ci::gl::drawSolidRect(ci::Rectf(vec2(50, 400), vec2(750, 1100)));
+  ci::gl::color(ci::Color(0.92f, 0.63f, 0.2f));
+  ci::gl::drawSolidRect(ci::Rectf(vec2(750, 400), vec2(1450, 1100)));
+  ci::gl::color(ci::Color(0.92f, 0.43f, 0.2f));
+  ci::gl::drawSolidRect(ci::Rectf(vec2(50, 1100), vec2(750, 1800)));
+  ci::gl::color(ci::Color(0.92f, 0.23f, 0.2f));
+  ci::gl::drawSolidRect(ci::Rectf(vec2(750, 1100), vec2(1450, 1800)));
+  DrawText("2x2", vec2(400, 650));
+  DrawText("press left", vec2(400, 750));
+  DrawText("3x3", vec2(1100, 650));
+  DrawText("press right", vec2(1100, 750));
+  DrawText("4x4", vec2(400, 1350));
+  DrawText("press down", vec2(400, 1450));
+  DrawText("5x5", vec2(1100, 1350));
+  DrawText("press up", vec2(1100, 1450));
+}
+
+void GameState::SelectGame(size_t board_size) {
+  board_size_ = board_size;
+  square_width_ = (window_width_ - 2 * margin_) / board_size;
+  for (size_t i = 0; i < board_size_; i++) {
+    for (size_t j = 0; j < board_size_; j++) {
+      vec2 top_left(margin_ + square_width_ * i, info_height_ + square_width_ * j);
+      vec2 bottom_right(margin_ + square_width_ * (i + 1), info_height_ + square_width_ * (j + 1));
+      tiles_.emplace_back(ci::Rectf(top_left, bottom_right));
+    }
+  }
+  tile_values_ = vector<vector<size_t>>(board_size_, vector<size_t>(board_size_, 0));
+  srand((unsigned int) time(NULL));
+  size_t rand1 = 0;
+  size_t rand2 = 0;
+  while (rand1 == rand2) {
+    rand1 = rand() % (board_size_ * board_size_);
+    rand2 = rand() % (board_size_ * board_size_);
+  }
+  bool four1 = (rand() % kFourChanceRatio) == 0;
+  bool four2 = (rand() % kFourChanceRatio) == 0;
+  if (four1) {
+    tile_values_[rand1 % board_size_][rand1 / board_size_] = 4;
+  } else {
+    tile_values_[rand1 % board_size_][rand1 / board_size_] = 2;
+  }
+  if (four2) {
+    tile_values_[rand2 % board_size_][rand2 / board_size_] = 4;
+  } else {
+    tile_values_[rand2 % board_size_][rand2 / board_size_] = 2;
+  }
 }
 
 }  // namespace game

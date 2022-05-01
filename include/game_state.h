@@ -61,6 +61,12 @@ class GameState {
   bool UpdateState(Input input);
 
   /**
+   * Generates the game based on the given board size.
+   * @param board_size the size of the board.
+   */
+  void SelectGame(size_t board_size);
+
+  /**
    * The current player score.
    */
   size_t score_;
@@ -69,6 +75,11 @@ class GameState {
    * True if the game is finished.
    */
   bool finished_;
+
+  /**
+   * True if the player is in the menu screen.
+   */
+  bool in_menu_;
 
 private:
   size_t window_width_;
@@ -88,6 +99,7 @@ private:
   void DrawText(const std::string& text, const vec2& pos) const;
   ci::Color GetTileColor(size_t val) const;
   bool GameFinished();
+  void DisplayMenu() const;
 };
 
 }  // namespace game
