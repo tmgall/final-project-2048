@@ -35,7 +35,8 @@ void GameState::Display() const {
     }
     DrawText("Score: " + std::to_string(score_), vec2(window_width_ / 2, 20));
     if (finished_) {
-      DrawText("Game Over", vec2(window_width_ / 2, 200));
+      DrawText("Game Over", vec2(window_width_ / 2, 150));
+      DrawText("(press space for menu)", vec2(window_width_ / 2, 250));
     }
   }
 }
@@ -285,6 +286,15 @@ void GameState::SelectGame(size_t board_size) {
   } else {
     tile_values_[rand2 % board_size_][rand2 / board_size_] = 2;
   }
+}
+
+void GameState::ResetGame() {
+  tiles_.clear();
+  for (size_t i = 0; i < board_size_; i++) {
+    tile_values_[i].clear();
+  }
+  tile_values_.clear();
+  score_ = 0;
 }
 
 }  // namespace game

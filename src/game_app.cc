@@ -46,6 +46,12 @@ void GameApp::keyDown(KeyEvent event) {
     } else {
       state.ExecuteInput(GameState::up);
     }
+  } else if (event.getCode() == KeyEvent::KEY_SPACE) {
+    if (state.finished_ && !state.in_menu_) {
+      state.in_menu_ = true;
+      state.finished_ = false;
+      state.ResetGame();
+    }
   }
   update();
 }

@@ -65,6 +65,11 @@ class GameState {
   void SelectGame(size_t board_size);
 
   /**
+   * Resets squares, score, and tiles.
+   */
+  void ResetGame();
+
+  /**
    * The current player score.
    */
   size_t score_;
