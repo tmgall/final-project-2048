@@ -4,8 +4,8 @@ namespace game {
 
 using glm::vec2;
 
-GameState::GameState(size_t window_width, size_t window_height, size_t margin, size_t board_size, size_t info_height) :
-    window_width_(window_width), window_height_(window_height), margin_(margin), info_height_(info_height),
+GameState::GameState(size_t window_width, size_t margin, size_t info_height) :
+    window_width_(window_width), margin_(margin), info_height_(info_height), board_size_(0), square_width_(0),
     score_(0), finished_(false), in_menu_(true), tiles_(vector<ci::Rectf>()) {
 }
 
@@ -198,12 +198,12 @@ void GameState::AddRandomNumberToBoard() {
   }
 }
 
-void GameState::DrawText(const std::string& text, const vec2& pos) const {
+void GameState::DrawText(const std::string& text, const vec2& pos) {
   static ci::Font f("roboto regular", 160);
   ci::gl::drawStringCentered(text, pos, ci::Color(0.2f, 0.2f, 0.2f), f);
 }
 
-ci::Color GameState::GetTileColor(size_t val) const {
+ci::Color GameState::GetTileColor(size_t val) {
   if (val == 0) {
     return {0.92f, 0.83f, 0.2f};
   } else if ((val & (val - 1)) != 0) {

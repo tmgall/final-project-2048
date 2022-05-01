@@ -20,12 +20,10 @@ class GameState {
   /**
    * Constructor which takes custom values.
    * @param window_width height of display window.
-   * @param window_height width of display window.
    * @param margin margin on the side of display window.
-   * @param board_size number of tiles along a side of the board.
    * @param info_height the height of the section of UI above the game board.
    */
-  GameState(size_t window_width, size_t window_height, size_t margin, size_t board_size, size_t info_height);
+  GameState(size_t window_width, size_t margin, size_t info_height);
 
   /**
    * Draws the entire game board on the UI in its current state.
@@ -83,7 +81,6 @@ class GameState {
 
 private:
   size_t window_width_;
-  size_t window_height_;
   size_t margin_;
   size_t board_size_;
   size_t square_width_;
@@ -96,8 +93,8 @@ private:
   bool MoveLeft();
   bool MoveUp();
   void AddRandomNumberToBoard();
-  void DrawText(const std::string& text, const vec2& pos) const;
-  ci::Color GetTileColor(size_t val) const;
+  static void DrawText(const std::string& text, const vec2& pos);
+  static ci::Color GetTileColor(size_t val) ;
   bool GameFinished();
   void DisplayMenu() const;
 };

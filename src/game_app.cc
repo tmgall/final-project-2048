@@ -3,8 +3,7 @@
 namespace game {
 
 GameApp::GameApp() :
-                 state(GameState(kDefaultWindowWidth, kDefaultWindowHeight,
-                                 kDefaultMargin, kDefaultBoardSize,kDefaultInfoHeight)) {
+                 state(GameState(kDefaultWindowWidth, kDefaultMargin, kDefaultInfoHeight)) {
   ci::app::setWindowSize(kDefaultWindowWidth, kDefaultWindowHeight);
 }
 

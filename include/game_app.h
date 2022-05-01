@@ -33,7 +33,6 @@ private:
   static const size_t kDefaultWindowWidth = 1500;
   static const size_t kDefaultWindowHeight = 1850;
   static const size_t kDefaultMargin = 50;
-  static const size_t kDefaultBoardSize = 4;
   static const size_t kDefaultInfoHeight = 400;
 };
 
