@@ -207,7 +207,7 @@ void GameState::DrawText(const std::string& text, const vec2& pos) {
 ci::Color GameState::GetTileColor(size_t val) {
   if (val == 0) {
     return {0.92f, 0.83f, 0.2f};
-  } else if ((val & (val - 1)) != 0) {
+  } else if ((val & (val - 1)) != 0) { // true if value is not a power of two
     return {0.92f, 0.0f, 0.2f};
   } else {
     double power = log(val) / log(2);

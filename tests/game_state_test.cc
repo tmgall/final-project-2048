@@ -26,7 +26,7 @@ bool BoardsEqual(const vector<vector<size_t>>& b1, const vector<vector<size_t>>&
   return true;
 }
 
-TEST_CASE("GameState constructor") {
+TEST_CASE("GameState SelectGame initializes proper values") {
   size_t board_size = 2;
   GameState gs2(1500, 50, 400);
   gs2.SelectGame(board_size);
@@ -550,4 +550,14 @@ TEST_CASE("Test game over") {
     gs.ExecuteInput(GameState::up);
     REQUIRE(gs.finished_);
   }
+}
+
+TEST_CASE("Test game reset") {
+  size_t board_size = 4;
+  GameState gs(1500, 50, 400);
+  gs.SelectGame(board_size);
+  gs.ResetGame();
+  REQUIRE(gs.score_ == 0);
+  REQUIRE(gs.tiles_.empty());
+  REQUIRE(gs.tile_values_.empty());
 }
